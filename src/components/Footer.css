@@ -1,0 +1,116 @@
+.footer {
+  background: var(--navy-900);
+  color: var(--text-on-dark-muted);
+  padding-block: var(--space-8) var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer__grid {
+  display: grid;
+  gap: var(--space-7);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .footer__grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+.footer__brand {
+  max-width: 340px;
+}
+
+/* The KALM logo ships on its own #172A3B navy; round the corners so it reads
+   as an intentional brand block against the darker footer background. */
+.footer__brand img {
+  border-radius: var(--radius);
+}
+
+.footer__brand p {
+  color: var(--text-on-dark-muted);
+  margin-top: var(--space-4);
+  font-size: 0.95rem;
+}
+
+.footer__heading {
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+.footer__links li + li {
+  margin-top: var(--space-3);
+}
+
+.footer__links a {
+  color: var(--text-on-dark-muted);
+  font-size: 0.95rem;
+  transition: color var(--transition);
+}
+
+.footer__links a:hover {
+  color: var(--white);
+}
+
+.footer__contact {
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.footer__contact a {
+  color: var(--slate-light);
+}
+
+.footer__contact a:hover {
+  color: var(--white);
+}
+
+.footer__partner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  background: var(--white);
+  border-radius: var(--radius);
+  width: fit-content;
+}
+
+.footer__partner-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.footer__bottom {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.86rem;
+}
+
+.footer__legal {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.footer__legal a:hover {
+  color: var(--white);
+}
+
+.footer__reg {
+  color: var(--text-on-dark-muted);
+}
