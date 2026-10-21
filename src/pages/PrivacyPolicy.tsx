@@ -22,14 +22,6 @@ export default function PrivacyPolicy() {
       <section className="section">
         <div className="container">
           <div className="legal">
-            <div className="legal__notice" role="note">
-              This privacy policy is provided as a starting point for {SITE.name}.
-              It should be reviewed and completed for compliance with applicable
-              South African privacy legislation, including the Protection of
-              Personal Information Act (POPIA), before publication. It is not a
-              certification of legal compliance.
-            </div>
-
             <h2>1. Introduction</h2>
             <p>
               {SITE.name} ("we", "us", "our") respects your privacy. This policy
@@ -96,9 +88,7 @@ export default function PrivacyPolicy() {
             <p>
               We retain enquiry information for as long as necessary to respond to
               your enquiry and for legitimate business and record-keeping
-              purposes, after which it is securely deleted or anonymised. Specific
-              retention periods should be confirmed as part of the review of this
-              policy.
+              purposes, after which it is securely deleted or anonymised.
             </p>
 
             <h2>8. Your rights</h2>
@@ -111,9 +101,7 @@ export default function PrivacyPolicy() {
             </ul>
             <p>
               To make a request, contact us at{" "}
-              <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. The details of a
-              designated information officer should be added here following legal
-              review.
+              <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
             </p>
 
             <h2>9. Changes to this policy</h2>
@@ -130,7 +118,6 @@ export default function PrivacyPolicy() {
             </p>
 
             <p className="legal__updated">
-              Draft for review — not yet legally certified. Registered entity:{" "}
               {SITE.name}, registration number {SITE.registrationNumber}.
             </p>
           </div>

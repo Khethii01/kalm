@@ -111,8 +111,8 @@ export default function SupplierEnquiries() {
               </span>
               <h3>Company profile access</h3>
               <p>
-                A company profile can be shared once a finalised document is
-                available. Request access and we will provide what we can.
+                Request access to our company profile and we will share it with
+                your procurement team to support your onboarding process.
               </p>
             </div>
             <div className="card">
@@ -121,9 +121,9 @@ export default function SupplierEnquiries() {
               </span>
               <h3>Supporting documentation</h3>
               <p>
-                Supporting documents can be provided where available and
-                applicable to your enquiry. We do not display documents we have
-                not yet been provided.
+                We can provide supporting documentation relevant to your
+                enquiry. Let us know what your onboarding process requires and
+                we will supply it.
               </p>
             </div>
           </div>
@@ -135,12 +135,11 @@ export default function SupplierEnquiries() {
         <div className="container container--narrow">
           <div className="section-head">
             <span className="eyebrow">Documentation</span>
-            <h2>Documents that may be provided</h2>
+            <h2>Documents we can provide</h2>
             <p>
-              Depending on your requirements and availability, supporting
-              documents may include the following. These are provided on request
-              where applicable — nothing here is a claim of current compliance
-              status.
+              Depending on your requirements, supporting documentation may
+              include the following. Let us know what you need as part of your
+              supplier onboarding and we will provide it on request.
             </p>
           </div>
           <ul className="stack" style={{ marginTop: "var(--space-6)" }}>

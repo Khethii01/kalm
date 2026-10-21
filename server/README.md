@@ -1,45 +1,77 @@
-# KALM enquiry API
+# Enquiry handling
 
-A minimal, dependency-free Node server that receives form submissions from the
-website and stores them to `server/data/enquiries.jsonl`. This makes the quote,
-supplier and contact forms genuinely persist data without any setup.
+Form submissions (quote / supplier / general) are sent to `/api/enquiries` by
+the website. How that endpoint behaves depends on where the site runs.
 
-## Run it
+## Production on Vercel (what you're using)
+
+In production the endpoint is a **Vercel serverless function** at
+`api/enquiries.ts`. Vercel detects the `api/` folder automatically — there is
+no separate server to deploy or keep running.
+
+On each submission the function emails the enquiry to KALM Group via
+[Resend](https://resend.com) and returns a reference number to the visitor.
+
+### One-time setup
+
+1. **Create a Resend account** at https://resend.com and add your domain
+   `kalmafrica.co.za`.
+2. **Verify the domain** by adding the DNS records Resend shows you (SPF/DKIM)
+   at your domain registrar. This proves you own the domain so email doesn't
+   land in spam. You'll be adding DNS records for the domain anyway.
+3. **Create an API key** in Resend (starts with `re_`).
+4. In the **Vercel dashboard** → your project → **Settings → Environment
+   Variables**, add:
+
+   | Name             | Value                                             | Required |
+   | ---------------- | ------------------------------------------------- | -------- |
+   | `RESEND_API_KEY` | your Resend key (`re_...`)                        | yes      |
+   | `ENQUIRY_TO`     | where enquiries are sent (default `info@kalmafrica.co.za`) | no |
+   | `ENQUIRY_FROM`   | verified sender, e.g. `KALM Group <enquiries@kalmafrica.co.za>` | no |
+
+5. **Redeploy.** From then on, every enquiry is emailed to `ENQUIRY_TO`.
+
+### Behaviour notes
+
+- The visitor's email address is set as the **reply-to**, so you can reply to
+  an enquiry directly from your inbox.
+- Email is **best-effort**: the submission is always accepted and a reference
+  returned, and if email delivery fails it is logged (visible in Vercel's
+  function logs) rather than losing the enquiry. The visitor is never told an
+  email was sent — only that the enquiry was received.
+- If `RESEND_API_KEY` is missing, the endpoint still accepts submissions but no
+  email goes out (and it logs a warning). So nothing breaks before you add the
+  key — you just won't get emails yet.
+
+## Local development
+
+The Vercel function also runs locally with the Vercel CLI:
 
 ```bash
-npm run server        # starts the API on http://localhost:8787
+npm i -g vercel
+vercel dev          # serves the site + /api function together
 ```
 
-During development, `npm run dev` proxies `/api/*` to this server automatically
-(see `vite.config.ts`). You can run both at once with:
+Create a `.env` (copy from `.env.example`) with `RESEND_API_KEY` to test real
+emails locally, or leave it unset to test the flow without sending.
+
+### Alternative: the standalone Node server
+
+`server/index.mjs` is a zero-dependency Node server that stores submissions to
+`server/data/enquiries.jsonl`. It predates the Vercel setup and is handy for
+offline/local testing without the Vercel CLI:
 
 ```bash
-npm run dev:full
+npm run dev:full    # Vite + the local Node server, proxied at /api
 ```
 
-Submitted enquiries are appended as one JSON object per line to
-`server/data/enquiries.jsonl`.
+It does **not** send email — it only writes to the JSONL file. Production on
+Vercel uses `api/enquiries.ts` (with Resend), not this file.
 
-## Honest status of email + database
+## Want a database too?
 
-- **Database:** submissions are stored to a local JSONL file. This is real
-  persistence suitable for development and small volumes. For production, swap
-  in Supabase (or Lovable Cloud) — see the `TODO: Supabase integration` block in
-  `server/index.mjs`.
-- **Email:** no email is sent. The UI does **not** claim an email was delivered.
-  To notify `info@kalmafrica.co.za`, wire up a provider (Resend, Amazon SES, or
-  SMTP via nodemailer) in the `TODO: Email notification` block. Keep all API
-  keys and SMTP credentials in server-side environment variables only — never in
-  browser code.
-
-## Upgrading to Supabase (outline)
-
-1. Create a Supabase project and an `enquiries` table with columns matching the
-   stored record (`reference`, `type`, `received_at`, `data jsonb`).
-2. Enable Row Level Security and restrict read access to authorised admins.
-3. Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` as server environment
-   variables.
-4. Uncomment the Supabase block in `server/index.mjs`.
-
-The frontend never needs the service-role key — it only ever POSTs to `/api`.
-```
+Email alone is usually enough for enquiries. If you also want every enquiry
+stored in a database (searchable, exportable), the cleanest fit alongside
+Vercel is Supabase: create an `enquiries` table and add an insert call in
+`api/enquiries.ts` next to the email send. Keep the service key in Vercel env
+vars only — never in browser code. Say the word and I'll wire it in.

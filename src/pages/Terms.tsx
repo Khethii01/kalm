@@ -25,13 +25,6 @@ export default function Terms() {
       <section className="section">
         <div className="container">
           <div className="legal">
-            <div className="legal__notice" role="note">
-              This is an editable starting draft prepared for {SITE.name}. It must
-              be reviewed and approved by a qualified legal professional before
-              publication. It is not a lawyer-approved document in its current
-              form.
-            </div>
-
             <h2>1. About these terms</h2>
             <p>
               These terms and conditions govern your use of the website operated
@@ -106,8 +99,8 @@ export default function Terms() {
             <h2>9. Governing law</h2>
             <p>
               These terms are governed by the laws of the Republic of South
-              Africa. The applicable jurisdiction should be confirmed during legal
-              review.
+              Africa, and any dispute arising from them is subject to the
+              jurisdiction of the South African courts.
             </p>
 
             <h2>10. Contact</h2>
@@ -117,7 +110,7 @@ export default function Terms() {
             </p>
 
             <p className="legal__updated">
-              Draft for legal review — not yet approved for publication.
+              {SITE.name}, registration number {SITE.registrationNumber}.
             </p>
           </div>
         </div>
