@@ -8,7 +8,10 @@
     "dev": "vite",
     "server": "node server/index.mjs",
     "dev:full": "node scripts/dev-full.mjs",
-    "build": "tsc -b && vite build",
+    "build:client": "vite build",
+    "build:ssr": "vite build --config vite.config.ssr.ts",
+    "prerender": "node scripts/prerender.mjs",
+    "build": "tsc -b && npm run build:client && npm run build:ssr && npm run prerender",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit"
   },

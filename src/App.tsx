@@ -7,6 +7,8 @@ import Industries from "./pages/Industries";
 import RequestAQuote from "./pages/RequestAQuote";
 import SupplierEnquiries from "./pages/SupplierEnquiries";
 import Contact from "./pages/Contact";
+import Insights from "./pages/Insights";
+import Article from "./pages/Article";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
@@ -22,6 +24,8 @@ export default function App() {
         <Route path="/request-a-quote" element={<RequestAQuote />} />
         <Route path="/supplier-enquiries" element={<SupplierEnquiries />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/insights" element={<Insights />} />
+        <Route path="/insights/:slug" element={<Article />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="*" element={<NotFound />} />

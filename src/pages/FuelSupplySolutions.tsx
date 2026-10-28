@@ -4,6 +4,7 @@ import PageHeader from "../components/PageHeader";
 import Icon from "../components/Icon";
 import CtaBand from "../components/CtaBand";
 import { SOLUTIONS } from "../data";
+import { breadcrumbLd, serviceLd } from "../seo";
 
 const FACTORS = [
   "Fuel type",
@@ -18,9 +19,22 @@ export default function FuelSupplySolutions() {
   return (
     <>
       <Seo
-        title="Fuel Supply Solutions | Bulk Diesel & Commercial Fuel | KALM Group"
-        description="Commercial diesel and bulk fuel supply enquiries for South African businesses — recurring supply, once-off orders and customer-specific fuel quotation requests."
+        title="Bulk Diesel & Commercial Fuel Supply Solutions | KALM Group"
+        description="Bulk diesel and commercial fuel supply enquiries for South African businesses — mining, transport and industry. Recurring supply, once-off orders and customer-specific fuel quotation requests."
         path="/fuel-supply-solutions"
+        keywords="bulk diesel supply South Africa, commercial fuel supplier South Africa, diesel supply for mining, recurring bulk fuel supply, fuel quotation request South Africa"
+        jsonLd={[
+          breadcrumbLd([
+            { name: "Home", path: "/" },
+            { name: "Fuel Supply Solutions", path: "/fuel-supply-solutions" },
+          ]),
+          serviceLd({
+            name: "Bulk diesel and commercial fuel supply",
+            description:
+              "Diesel and bulk fuel supply enquiries including recurring supply, once-off commercial orders and customer-specific quotation requests for South African businesses.",
+            serviceType: "Bulk diesel supply",
+          }),
+        ]}
       />
 
       <PageHeader

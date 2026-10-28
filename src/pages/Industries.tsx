@@ -5,15 +5,30 @@ import Icon from "../components/Icon";
 import CtaBand from "../components/CtaBand";
 import AppImage from "../components/AppImage";
 import { INDUSTRIES } from "../data";
+import { breadcrumbLd, faqLd, serviceLd, MINING_FAQ } from "../seo";
 import "./Industries.css";
 
 export default function Industries() {
   return (
     <>
       <Seo
-        title="Industries We Serve | Fuel Supply for Mining, Logistics & Industry"
-        description="Commercial and bulk fuel supply enquiries for mining contractors, transport and logistics fleets, construction, industrial operations, fuel retailers and agriculture in South Africa."
+        title="Bulk Fuel Supply for Mining, Logistics & Industry | KALM Group"
+        description="Bulk diesel and commercial fuel supply enquiries for mining companies, mining contractors, transport fleets, construction, industrial operations and fuel retailers across South Africa."
         path="/industries"
+        keywords="bulk diesel supply South Africa, fuel supply for mining companies, mining contractor diesel supply, commercial fuel supplier South Africa, bulk fuel supply for logistics companies"
+        jsonLd={[
+          breadcrumbLd([
+            { name: "Home", path: "/" },
+            { name: "Industries", path: "/industries" },
+          ]),
+          serviceLd({
+            name: "Bulk fuel supply for mining and industry",
+            description:
+              "Commercial and bulk diesel fuel supply enquiries for mining operations, mining contractors, transport and logistics, construction, industrial operations, fuel retailers and agriculture in South Africa.",
+            serviceType: "Commercial and bulk fuel supply",
+          }),
+          faqLd(MINING_FAQ),
+        ]}
       />
 
       <PageHeader
@@ -52,6 +67,24 @@ export default function Industries() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* FAQ — mirrors the FAQPage structured data for rich results */}
+      <section className="section section--alt">
+        <div className="container">
+          <div className="section-head section-head--center">
+            <span className="eyebrow">Frequently asked</span>
+            <h2>Bulk fuel supply for mining — common questions</h2>
+          </div>
+          <div className="faq" style={{ marginTop: "var(--space-7)" }}>
+            {MINING_FAQ.map((item) => (
+              <div className="faq__item" key={item.q}>
+                <h3>{item.q}</h3>
+                <p>{item.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

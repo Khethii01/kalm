@@ -210,6 +210,20 @@ export default async function handler(req: Req, res: Res) {
     res.status(204).end();
     return;
   }
+
+  // Health check: GET /api/enquiries reports whether email is configured,
+  // without ever revealing the key. Handy to confirm the integration is live.
+  if (req.method === "GET") {
+    res.status(200).json({
+      ok: true,
+      service: "kalm-enquiry-api",
+      emailConfigured: Boolean(process.env.RESEND_API_KEY),
+      deliversTo: TO,
+      sendsFrom: FROM,
+    });
+    return;
+  }
+
   if (req.method !== "POST") {
     res.status(405).json({ ok: false, error: "Method not allowed." });
     return;

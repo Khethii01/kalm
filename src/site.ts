@@ -19,6 +19,7 @@ export const NAV_LINKS = [
   { label: "About Us", to: "/about" },
   { label: "Fuel Supply Solutions", to: "/fuel-supply-solutions" },
   { label: "Industries", to: "/industries" },
+  { label: "Insights", to: "/insights" },
   { label: "Supplier Enquiries", to: "/supplier-enquiries" },
   { label: "Contact", to: "/contact" },
 ] as const;

@@ -5,15 +5,25 @@ import CtaBand from "../components/CtaBand";
 import AppImage, { PHOTOS } from "../components/AppImage";
 import { PumaLogo } from "../components/Logo";
 import { INDUSTRIES, SOLUTIONS, STEPS } from "../data";
+import { serviceLd } from "../seo";
 import "./Home.css";
 
 export default function Home() {
   return (
     <>
       <Seo
-        title="KALM Group | Commercial Fuel Supply South Africa"
-        description="KALM Group (Pty) Ltd engages with mining, logistics, construction and industrial businesses to discuss commercial fuel supply requirements in South Africa."
+        title="KALM Group | Commercial & Bulk Fuel Supply South Africa"
+        description="KALM Group (Pty) Ltd supplies commercial and bulk diesel fuel enquiries for mining, logistics, construction and industrial businesses across South Africa. Request a fuel quote."
         path="/"
+        keywords="commercial fuel supplier South Africa, bulk diesel supply South Africa, fuel supply for mining companies, bulk fuel supply for logistics companies, fuel supplier for industrial businesses"
+        jsonLd={[
+          serviceLd({
+            name: "Commercial and bulk fuel supply",
+            description:
+              "Commercial and bulk diesel fuel supply for mining, transport and logistics, construction, industrial operations, fuel retailers and agriculture across South Africa.",
+            serviceType: "Commercial and bulk fuel supply",
+          }),
+        ]}
       />
 
       {/* Hero */}
