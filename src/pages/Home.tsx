@@ -195,9 +195,19 @@ export default function Home() {
             ))}
           </div>
 
-          <div style={{ marginTop: "var(--space-7)" }}>
+          <div
+            style={{
+              marginTop: "var(--space-7)",
+              display: "flex",
+              gap: "var(--space-4)",
+              flexWrap: "wrap",
+            }}
+          >
             <Link to="/fuel-supply-solutions" className="btn btn--primary">
               Explore fuel supply solutions
+            </Link>
+            <Link to="/lubricants" className="btn btn--secondary">
+              View lubricants
             </Link>
           </div>
         </div>

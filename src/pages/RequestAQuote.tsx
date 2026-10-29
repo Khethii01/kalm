@@ -89,7 +89,7 @@ export default function RequestAQuote() {
       next.email = "Please enter a valid email address.";
     if (!form.phone.trim()) next.phone = "Telephone number is required.";
     if (!form.industry) next.industry = "Please select an industry.";
-    if (!form.fuelType) next.fuelType = "Please select a fuel type.";
+    if (!form.fuelType) next.fuelType = "Please select a product.";
     if (!form.volume.trim())
       next.volume = "Please provide an estimated volume in litres.";
     else if (!/^\d[\d\s,]*$/.test(form.volume.trim()))
@@ -324,7 +324,7 @@ export default function RequestAQuote() {
 
               <div style={{ marginTop: "var(--space-5)" }}>
                 <ChoiceGroup
-                  legend="Fuel type"
+                  legend="Product required"
                   name="fuelType"
                   required
                   value={form.fuelType}
@@ -333,7 +333,8 @@ export default function RequestAQuote() {
                   options={[
                     { value: "diesel", label: "Diesel" },
                     { value: "petrol", label: "Petrol" },
-                    { value: "both", label: "Both" },
+                    { value: "both", label: "Diesel & Petrol" },
+                    { value: "lubricants", label: "Lubricants" },
                     { value: "other", label: "Other" },
                   ]}
                 />

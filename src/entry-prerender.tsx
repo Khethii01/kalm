@@ -29,6 +29,7 @@ export const ROUTES = [
   "/",
   "/about",
   "/fuel-supply-solutions",
+  "/lubricants",
   "/industries",
   "/request-a-quote",
   "/supplier-enquiries",

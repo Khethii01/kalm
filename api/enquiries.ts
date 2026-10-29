@@ -39,7 +39,7 @@ const LABELS: Record<string, string> = {
   email: "Email",
   phone: "Telephone",
   industry: "Industry",
-  fuelType: "Fuel type",
+  fuelType: "Product required",
   volume: "Estimated volume (litres)",
   frequencyType: "Once-off or recurring",
   supplyFrequency: "Supply frequency",

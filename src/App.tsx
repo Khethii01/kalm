@@ -7,6 +7,7 @@ import Industries from "./pages/Industries";
 import RequestAQuote from "./pages/RequestAQuote";
 import SupplierEnquiries from "./pages/SupplierEnquiries";
 import Contact from "./pages/Contact";
+import Lubricants from "./pages/Lubricants";
 import Insights from "./pages/Insights";
 import Article from "./pages/Article";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/fuel-supply-solutions" element={<FuelSupplySolutions />} />
+        <Route path="/lubricants" element={<Lubricants />} />
         <Route path="/industries" element={<Industries />} />
         <Route path="/request-a-quote" element={<RequestAQuote />} />
         <Route path="/supplier-enquiries" element={<SupplierEnquiries />} />

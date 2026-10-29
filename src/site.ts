@@ -18,6 +18,7 @@ export const NAV_LINKS = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Fuel Supply Solutions", to: "/fuel-supply-solutions" },
+  { label: "Lubricants", to: "/lubricants" },
   { label: "Industries", to: "/industries" },
   { label: "Insights", to: "/insights" },
   { label: "Supplier Enquiries", to: "/supplier-enquiries" },
