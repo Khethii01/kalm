@@ -114,3 +114,12 @@
 .footer__reg {
   color: var(--text-on-dark-muted);
 }
+
+.footer__credit {
+  margin-top: var(--space-5);
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-on-dark-muted);
+  opacity: 0.8;
+}

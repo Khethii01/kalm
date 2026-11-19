@@ -72,6 +72,8 @@ export default function Footer() {
             </a>
           </div>
         </div>
+
+        <p className="footer__credit">Developed by Modura Technologies</p>
       </div>
     </footer>
   );
